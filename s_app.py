@@ -29,7 +29,7 @@ embedding_llm = OpenAIEmbeddings()
 conn = st.connection('s3', type=FilesConnection)
 vector_store = Chroma(
     embedding_function=embedding_llm,
-    persist_directory=conn.read("pr-chroma-db/db/00",ttl=1200)
+    persist_directory=conn.read("pr-chroma-db/db/00",input_type='sqlite',ttl=1200)
 )
 
 general_system_template = r""" 
