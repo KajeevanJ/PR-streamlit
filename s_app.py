@@ -1,6 +1,5 @@
 import os
 import streamlit as st
-from dotenv import load_dotenv
 from langchain_community.vectorstores import Chroma
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
@@ -10,9 +9,11 @@ from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate,HumanMessagePromptTemplate,SystemMessagePromptTemplate
 
 
-load_dotenv()
-openai_api_key = os.getenv("OPENAI_API_KEY")
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
+os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
 
 llm = ChatOpenAI(
