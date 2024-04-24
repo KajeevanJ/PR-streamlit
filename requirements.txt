@@ -2,3 +2,9 @@ langchain-community
 langchain_openai
 langchain_core
 chromadb
+langchain
+STREAMLIT
+pysqlite3-binary
+s3fs
+st-files-connection
+s3sqlite

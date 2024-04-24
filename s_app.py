@@ -1,18 +1,20 @@
 import os
 import streamlit as st
-from dotenv import load_dotenv
 from langchain_community.vectorstores import Chroma
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
-from langchain.text_splitter import CharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate,HumanMessagePromptTemplate,SystemMessagePromptTemplate
+from st_files_connection import FilesConnection
 
 
-load_dotenv()
-openai_api_key = os.getenv("OPENAI_API_KEY")
 
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
+os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
 
 llm = ChatOpenAI(
@@ -24,9 +26,10 @@ llm = ChatOpenAI(
 
 embedding_llm = OpenAIEmbeddings()
 
+conn = st.connection('s3', type=FilesConnection)
 vector_store = Chroma(
     embedding_function=embedding_llm,
-    persist_directory='db/00'
+    persist_directory=conn.read("pr-chroma-db/db/00",input_type='sqlite',ttl=1200)
 )
 
 general_system_template = r""" 
