@@ -6,6 +6,8 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain_openai import OpenAIEmbeddings
 from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate,HumanMessagePromptTemplate,SystemMessagePromptTemplate
+from st_files_connection import FilesConnection
+
 
 
 __import__('pysqlite3')
@@ -23,6 +25,9 @@ llm = ChatOpenAI(
 )
 
 embedding_llm = OpenAIEmbeddings()
+
+conn = st.connection('s3', type=FilesConnection)
+df = conn.read("pr-chroma-db/db/00", input_format=".sqlite3", ttl=1200)
 
 vector_store = Chroma(
     embedding_function=embedding_llm,
