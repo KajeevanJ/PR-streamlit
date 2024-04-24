@@ -2,3 +2,5 @@ langchain-community
 langchain_openai
 langchain_core
 chromadb
+langchain
+STREAMLIT
