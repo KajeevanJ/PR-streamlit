@@ -7,3 +7,4 @@ STREAMLIT
 pysqlite3-binary
 s3fs
 st-files-connection
+s3sqlite
