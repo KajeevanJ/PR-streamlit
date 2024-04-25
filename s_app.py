@@ -27,7 +27,7 @@ st.cache_resource
 vector_store = Chroma(
     embedding_function=embedding_llm,
     persist_directory='db/00'
-#)
+)
 general_system_template = r""" 
 Use the following pieces of context to answer the question at the end. 
 If you don't know the answer, please reply "I can't answer this question , as this question is out of my context, Please Try to ask a question related to University SelecION, Exam prepatation and education planning " from your own knowledge base 
