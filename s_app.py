@@ -47,8 +47,7 @@ messages = [
             SystemMessagePromptTemplate.from_template(general_system_template),
             HumanMessagePromptTemplate.from_template(general_user_template)
 ]
-user_question=""
-qa_prompt = ChatPromptTemplate.from_messages( user_question )
+qa_prompt = ChatPromptTemplate.from_messages( messages )
 
 
 
@@ -90,7 +89,7 @@ def main():
     user_question=st.chat_input("Ask the Princeton Review assistant !")
     
     if user_question:
-        response = st.session_state.conversation.invoke({'question': user_question})
+        response = st.session_state.conversation.invoke({ user_question})
         answer = response['answer']
         source_documents=''
         #source_documents = response['source_documents']
