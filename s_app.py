@@ -64,7 +64,7 @@ def get_conversation_chain(vectorstore):
         combine_docs_chain_kwargs={'prompt': qa_prompt}
     )
     return conversation_chain
-st.session_state.conversation = get_conversation_chain()
+st.session_state.conversation = get_conversation_chain(vector_store)
 
 def main():
     st.set_page_config(page_title="Chat with Princeton Review AI Assistant",
