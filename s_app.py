@@ -89,7 +89,7 @@ def main():
     user_question=st.chat_input("Ask the Princeton Review assistant !")
     
     if user_question:
-        response = st.session_state.conversation.invoke({ user_question})
+        response = st.session_state.conversation.invoke( user_question)
         answer = response['answer']
         source_documents=''
         #source_documents = response['source_documents']
