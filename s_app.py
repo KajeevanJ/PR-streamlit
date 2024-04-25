@@ -26,11 +26,15 @@ llm = ChatOpenAI(
 
 embedding_llm = OpenAIEmbeddings()
 
-st.cache_resource
-vector_store = Chroma(
+@st.cache_resource
+def load_vector_store():
+    vector_store=Chroma(
     embedding_function=embedding_llm,
-    persist_directory='db/'
-)
+    persist_directory='db/')
+
+    return vector_store
+
+
 general_system_template = r""" 
 Use the following pieces of context to answer the question at the end. 
 If you don't know the answer, please reply "I can't answer this question , as this question is out of my context, Please Try to ask a question related to University SelecION, Exam prepatation and education planning " from your own knowledge base 
@@ -67,7 +71,7 @@ def get_conversation_chain(vectorstore):
         combine_docs_chain_kwargs={'prompt': qa_prompt}
     )
     return conversation_chain
-st.session_state.conversation = get_conversation_chain(vector_store)
+st.session_state.conversation = get_conversation_chain(load_vector_store())
 
 def main():
     if "messages" not in st.session_state:
