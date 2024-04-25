@@ -37,7 +37,9 @@ def load_vector_store():
 
 general_system_template = r""" 
 Use the following pieces of context to answer the question at the end. 
-If you don't know the answer, please reply "I can't answer this question , as this question is out of my context, Please Try to ask a question related to University SelecION, Exam prepatation and education planning " from your own knowledge base 
+If you don't know the answer, please reply "I can't answer this question , as this question is out of my context, Please Try to ask a question related to University SelecION, Exam prepatation and education planning " from your own knowledge base,
+Don't hestitate to respond greetings and generic related questions to above mentioned domains
+
  ----
 {context}
 ----
