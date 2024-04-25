@@ -70,9 +70,6 @@ def get_conversation_chain(vectorstore):
 st.session_state.conversation = get_conversation_chain(vector_store)
 
 def main():
-    st.set_page_config(page_title="Chat with Princeton Review AI Assistant",
-                       page_icon=":books:")
-    
     if "messages" not in st.session_state:
         st.session_state.messages = []
     
