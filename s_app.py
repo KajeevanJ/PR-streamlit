@@ -14,6 +14,9 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
+st.set_page_config(page_title="Chat with Princeton Review AI Assistant",
+                       page_icon=":books:")
+
 llm = ChatOpenAI(
     openai_api_key=os.environ['OPENAI_API_KEY'],
     model='gpt-4-turbo-preview',
