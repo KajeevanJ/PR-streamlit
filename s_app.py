@@ -29,7 +29,7 @@ embedding_llm = OpenAIEmbeddings()
 st.cache_resource
 vector_store = Chroma(
     embedding_function=embedding_llm,
-    persist_directory='db/00'
+    persist_directory='db/'
 )
 general_system_template = r""" 
 Use the following pieces of context to answer the question at the end. 
