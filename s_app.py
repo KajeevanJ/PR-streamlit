@@ -94,7 +94,7 @@ def main():
         response = st.session_state.conversation.invoke( user_question)
         answer = response['answer']
         source_documents=''
-        #source_documents = response['source_documents']
+        source_documents = response['source_documents']
 
         st.session_state.chat_history.append({"role": "user", "content": user_question})
 
