@@ -102,7 +102,7 @@ def main():
         if source_documents:
             assistant_content += "\n\n**Source Documents:**\n"
             for doc in source_documents:
-                if len(doc.page_content) >= 30:
+                if len(doc.page_content) >= 100:
                     assistant_content += f"- Source: {doc.metadata['source']} - Page {doc.metadata['page']}\n"
 
         st.session_state.chat_history.append({"role": "assistant", "content": assistant_content})
